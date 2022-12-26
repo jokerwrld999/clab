@@ -1,13 +1,17 @@
-name: srl01
+name: rr
 
 topology:
   nodes:
-    srl:
+    srlinux:
       kind: srl
       image: ghcr.io/nokia/srlinux
     ceos:
       kind: ceos
       image: ceos:4.28.0F
+    gobgp:
+      kind: linux
+      image: ghcr.ip/hellt/network-multitool
 
   links:
-    - endpoints: ["srl:e1-1", "ceos: eth1"]
+    - endpoints: ["srlinux:e1-1", "ceos:eth1"]
+    - endpoints: ["ceos:eth2", "gobgp:eth1"]
