@@ -7,7 +7,7 @@ topology:
       image: ghcr.io/nokia/srlinux
     ceos:
       kind: ceos
-      image: ceos:4.28.0F
+      image: ceos:4.29.0F
     gobgp:
       kind: linux
       image: ghcr.ip/hellt/network-multitool
