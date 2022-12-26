@@ -1,0 +1,132 @@
+{
+  "name": "rr",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-2d5c05a35170",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "2001:172:20:20::/64",
+        "ipv6-gw": "2001:172:20:20::1",
+        "mtu": "1500",
+        "external-access": true
+      }
+    }
+  },
+  "nodes": {
+    "ceos": {
+      "index": "0",
+      "shortname": "ceos",
+      "longname": "clab-rr-ceos",
+      "fqdn": "ceos.rr.io",
+      "group": "",
+      "labdir": "/home/jokerwrld/github/clab/start/clab-rr/ceos",
+      "kind": "ceos",
+      "image": "ceos:4.29.0F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "172.20.20.4",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::4",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:3c:22:41",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-2d5c05a35170",
+        "clab-node-group": "",
+        "clab-node-kind": "ceos",
+        "clab-node-lab-dir": "/home/jokerwrld/github/clab/start/clab-rr/ceos",
+        "clab-node-name": "ceos",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/jokerwrld/github/clab/start/rr.clab.yaml",
+        "containerlab": "rr"
+      }
+    },
+    "gobgp": {
+      "index": "1",
+      "shortname": "gobgp",
+      "longname": "clab-rr-gobgp",
+      "fqdn": "gobgp.rr.io",
+      "group": "",
+      "labdir": "/home/jokerwrld/github/clab/start/clab-rr/gobgp",
+      "kind": "linux",
+      "image": "pierky/gobgp",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-2d5c05a35170",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/jokerwrld/github/clab/start/clab-rr/gobgp",
+        "clab-node-name": "gobgp",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/jokerwrld/github/clab/start/rr.clab.yaml",
+        "containerlab": "rr"
+      }
+    },
+    "srlinux": {
+      "index": "2",
+      "shortname": "srlinux",
+      "longname": "clab-rr-srlinux",
+      "fqdn": "srlinux.rr.io",
+      "group": "",
+      "labdir": "/home/jokerwrld/github/clab/start/clab-rr/srlinux",
+      "kind": "srl",
+      "image": "ghcr.io/nokia/srlinux",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-2d5c05a35170",
+        "clab-node-group": "",
+        "clab-node-kind": "srl",
+        "clab-node-lab-dir": "/home/jokerwrld/github/clab/start/clab-rr/srlinux",
+        "clab-node-name": "srlinux",
+        "clab-node-type": "ixrd2",
+        "clab-topo-file": "/home/jokerwrld/github/clab/start/rr.clab.yaml",
+        "containerlab": "rr"
+      }
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "srlinux",
+        "interface": "e1-1",
+        "mac": "aa:c1:ab:d4:58:39",
+        "peer": "z"
+      },
+      "z": {
+        "node": "ceos",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:62:26:02",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "ceos",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:2c:25:76",
+        "peer": "z"
+      },
+      "z": {
+        "node": "gobgp",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:ad:5e:0e",
+        "peer": "a"
+      }
+    }
+  ]
+}

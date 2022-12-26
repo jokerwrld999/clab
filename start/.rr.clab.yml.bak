@@ -1,0 +1,17 @@
+name: rr
+
+topology:
+  nodes:
+    srlinux:
+      kind: srl
+      image: ghcr.io/nokia/srlinux
+    ceos:
+      kind: ceos
+      image: ceos:4.29.0F
+    gobgp:
+      kind: linux
+      image: pierky/gobgp
+
+  links:
+    - endpoints: ["srlinux:e1-1", "ceos:eth1"]
+    - endpoints: ["ceos:eth2", "gobgp:eth1"]

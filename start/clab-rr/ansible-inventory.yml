@@ -1,0 +1,14 @@
+all:
+  children:
+    ceos:
+      hosts:
+        clab-rr-ceos:
+          ansible_host: 172.20.20.4
+    linux:
+      hosts:
+        clab-rr-gobgp:
+          ansible_host: 172.20.20.2
+    srl:
+      hosts:
+        clab-rr-srlinux:
+          ansible_host: 172.20.20.3
