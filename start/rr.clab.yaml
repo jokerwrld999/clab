@@ -10,7 +10,7 @@ topology:
       image: ceos:4.29.0F
     gobgp:
       kind: linux
-      image: ghcr.ip/hellt/network-multitool
+      image: pierky/gobgp
 
   links:
     - endpoints: ["srlinux:e1-1", "ceos:eth1"]
