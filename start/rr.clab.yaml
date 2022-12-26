@@ -7,7 +7,7 @@ topology:
       image: ghcr.io/nokia/srlinux
     ceos:
       kind: ceos
-      image: hyson007/ceos
+      image: ceos:4.28.0F
 
   links:
     - endpoints: ["srl:e1-1", "ceos: eth1"]
